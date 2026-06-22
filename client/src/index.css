@@ -1,0 +1,57 @@
+:root {
+  /* ── Field journal palette ── */
+  --ink: #1F2E1C;          /* deep canopy green-black, primary text */
+  --paper: #F4EFE3;        /* sun-bleached parchment, main background */
+  --paper-warm: #ECE3D1;   /* slightly deeper paper for panels */
+  --sage: #7A8B3F;         /* olive accent, primary action color */
+  --sage-deep: #5C6930;    /* darker sage for hover/active */
+  --clay: #C46A2E;         /* terracotta, warnings/alerts/highlights */
+  --sky: #3E5C76;          /* overcast blue, weather data */
+  --line: #D8CCB4;         /* hairline rule color on paper */
+  --line-deep: #B8A988;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--sky);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}

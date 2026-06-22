@@ -1,0 +1,19 @@
+{
+  "name": "farm-advisory-server",
+  "version": "1.0.0",
+  "description": "Backend proxy for WeatherAI Farm Advisory Dashboard",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "multer": "^2.0.1",
+    "node-fetch": "^3.3.2",
+    "form-data": "^4.0.0"
+  }
+}

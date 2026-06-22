@@ -4,6 +4,11 @@ A field journal for farm weather and canopy health, built on the WeatherAI API.
 
 Built for the WeatherAI Software Developer take-home challenge.
 
+**🌐 Live demo: [shamba-log.vercel.app](https://shamba-log.vercel.app/)**
+*(backend runs on Render's free tier. Therefore, if the first weather or canopy
+request takes 30–50 seconds, that's just the server waking up from idle;
+it's fast on every request after that)*
+
 ## What it does
 
 Shamba Log is a two-part farm advisory tool aimed at the kind of user WeatherAI's

@@ -4,6 +4,12 @@ import WeatherAlmanac from "./components/WeatherAlmanac";
 import CanopyReport from "./components/CanopyReport";
 import "./App.css";
 
+// In local dev, Vite proxies "/api" straight to the Express server (see
+// vite.config.js), so an empty base works. In production, set
+// VITE_API_BASE_URL to your deployed backend's URL (e.g. on Render) — see
+// the README for the exact steps. No trailing slash.
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+
 const today = new Date().toLocaleDateString("en-GB", {
   weekday: "long",
   day: "numeric",
@@ -29,7 +35,7 @@ export default function App() {
   const [quota, setQuota] = useState(null);
 
   useEffect(() => {
-    fetch("/api/trees/quota")
+    fetch(`${API_BASE}/api/trees/quota`)
       .then((r) => r.json())
       .then((data) => {
         if (!data.error) setQuota(data);
@@ -44,7 +50,7 @@ export default function App() {
 
     try {
       if (loc.auto) {
-        const res = await fetch("/api/geo");
+        const res = await fetch(`${API_BASE}/api/geo`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || data.error || "Could not detect location");
         setLocation({
@@ -65,7 +71,7 @@ export default function App() {
         days: 7,
         units: "metric",
       });
-      const res = await fetch(`/api/weather?${params}`);
+      const res = await fetch(`${API_BASE}/api/weather?${params}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || data.error || "Weather lookup failed");
       setWeather(data);
@@ -88,7 +94,7 @@ export default function App() {
       if (landAcres) formData.append("landAcres", landAcres);
       if (location?.name) formData.append("location", location.name);
 
-      const res = await fetch("/api/trees/analyze", {
+      const res = await fetch(`${API_BASE}/api/trees/analyze`, {
         method: "POST",
         body: formData,
       });
@@ -103,7 +109,7 @@ export default function App() {
       }
       setCanopyResult(data);
 
-      fetch("/api/trees/quota")
+      fetch(`${API_BASE}/api/trees/quota`)
         .then((r) => r.json())
         .then((d) => !d.error && setQuota(d))
         .catch(() => {});

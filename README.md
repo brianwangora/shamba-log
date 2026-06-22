@@ -98,3 +98,23 @@ Open `http://localhost:5173` in your browser.
 - Upload any aerial/farm-style photo (even a stock drone shot of a field or
   orchard) for the canopy report. The `/v1/trees/analyze` endpoint works on
   any plausible aerial image, not just real farm survey data.
+
+
+## Deployment
+
+**Backend (Render or Railway):**
+1. New Web Service → connect this repo → set root directory to `server`
+2. Build command: `npm install` · Start command: `npm start`
+3. Add an environment variable `WEATHER_AI_API_KEY` with your real key
+4. Deploy — you'll get a URL like `https://shamba-log-server.onrender.com`
+
+**Frontend (Netlify or Vercel):**
+1. New site → connect this repo → set root/base directory to `client`
+2. Build command: `npm run build` · Publish directory: `dist`
+3. Add an environment variable `VITE_API_BASE_URL` set to your deployed
+   backend's URL from the step above (no trailing slash)
+4. Deploy
+
+The frontend reads `VITE_API_BASE_URL` at build time (see `App.jsx`) and
+falls back to a relative `/api` path when it's unset, which is what makes
+local dev work through Vite's proxy without any extra configuration.

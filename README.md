@@ -65,7 +65,7 @@ shamba-log/
 
 ## Setup
 
-You'll need a free WeatherAI API key — sign up at
+You'll need a free WeatherAI API key. Sign up at
 [weather-ai.co](https://weather-ai.co) and generate one from
 **Dashboard → API Keys**.
 
@@ -111,7 +111,7 @@ Open `http://localhost:5173` in your browser.
 1. New Web Service → connect this repo → set root directory to `server`
 2. Build command: `npm install` · Start command: `npm start`
 3. Add an environment variable `WEATHER_AI_API_KEY` with your real key
-4. Deploy — you'll get a URL like `https://shamba-log-server.onrender.com`
+4. Deploy. You'll get a URL like `https://shamba-log-server.onrender.com`
 
 **Frontend (Netlify or Vercel):**
 1. New site → connect this repo → set root/base directory to `client`
